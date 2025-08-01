@@ -69,7 +69,7 @@ button:hover {
 }
 
 .light-theme {
-    background: url('assets/images/parchment-light.jpg') no-repeat center center fixed;
+    background: url('assets/images/parchment.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 

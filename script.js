@@ -2,9 +2,9 @@ const player = document.getElementById('player');
 const spellInput = document.getElementById('spellInput');
 const feedback = document.getElementById('feedback');
 const songs = [
-    'assets/audio/hedwig-theme.mp3',
-    'assets/audio/hogwarts-ambiance.mp3',
-    'assets/audio/heroic-song.mp3'
+    'assets/audio/hedwig.mp4',
+    'assets/audio/march.mp4',
+    'assets/audio/quiditch.mp4'
 ];
 let currentSongIndex = 0;
 
