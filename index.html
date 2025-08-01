@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Potter Spell Player</title>
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter Spell Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>Cast a Spell</h1>
-    <input id="spellInput" type="text" placeholder="Enter spell..." autofocus>
-    <button id="castButton">Cast Spell</button>
-    <button id="authButton">Authorize Spotify</button>
-    <div id="trackDisplay">
-      <img id="albumArt" src="" alt="Album Art">
-      <p id="trackName"></p>
-      <p id="artistName"></p>
-      <button id="playPauseButton">Pause</button>
+    <div class="container">
+        <h1>Cast Your Spell</h1>
+        <input type="text" id="spellInput" placeholder="Enter a spell...">
+        <button onclick="castSpell()">Cast Spell</button>
+        <p id="feedback">Welcome to Hogwarts! Cast a spell to begin.</p>
+        <audio id="player" src="assets/audio/hedwig-theme.mp3"></audio>
     </div>
-    <p id="errorMessage">You're a Muggle! Try a real spell.</p>
-  </div>
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,91 +1,79 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
-  background-size: cover;
-  font-family: 'Cinzel', serif;
-  color: white;
-  margin: 0;
+    background: url('assets/images/parchment.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Cinzel', serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    cursor: url('https://i.imgur.com/1Z5z3.png'), auto; /* Optional: Wand cursor */
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 28rem;
-  text-align: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-  font-size: 1.875rem;
-  margin-bottom: 1rem;
+    font-size: 2.5em;
+    color: #1a3c34;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  color: black;
-  border-radius: 0.25rem;
-  border: none;
-  box-sizing: border-box;
+input {
+    padding: 10px;
+    font-size: 1.2em;
+    margin: 10px;
+    border: 2px solid #1a3c34;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
 }
 
-#castButton {
-  background-color: #d97706;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #1a3c34;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#castButton:hover {
-  background-color: #b45309;
+button:hover {
+    background-color: #2e5c4f;
 }
 
-#trackDisplay {
-  margin-top: 1rem;
-  display: none;
+#feedback {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #333;
 }
 
-#albumArt {
-  width: 8rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.5rem;
+.error {
+    animation: shake 0.5s;
+    color: red;
 }
 
-#trackName {
-  font-size: 1.125rem;
+.success {
+    color: green;
 }
 
-#artistName {
-  font-size: 0.875rem;
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
 }
 
-#playPauseButton {
-  background-color: #059669;
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background-color 0.2s;
+.light-theme {
+    background: url('assets/images/parchment-light.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-#playPauseButton:hover {
-  background-color: #047857;
-}
-
-#errorMessage {
-  color: #ef4444;
-  margin-top: 1rem;
-  display: none;
+.dark-theme {
+    background: url('assets/images/starry-night.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
