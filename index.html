@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harry Potter Spell Player</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+      background-size: cover;
+      font-family: 'Cinzel', serif;
+      color: white;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+  <div class="bg-black bg-opacity-70 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+    <h1 class="text-3xl mb-4">Cast a Spell</h1>
+    <input id="spellInput" type="text" placeholder="Enter spell..." class="w-full p-2 mb-4 text-black rounded" autofocus>
+    <button id="castButton" class="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded">Cast Spell</button>
+    <div id="trackDisplay" class="mt-4 hidden">
+      <img id="albumArt" src="" alt="Album Art" class="w-32 mx-auto mb-2">
+      <p id="trackName" class="text-lg"></p>
+      <p id="artistName" class="text-sm"></p>
+      <button id="playPauseButton" class="bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded mt-2">Pause</button>
+    </div>
+    <p id="errorMessage" class="text-red-500 mt-4 hidden">You're a Muggle! Try a real spell.</p>
+  </div>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
