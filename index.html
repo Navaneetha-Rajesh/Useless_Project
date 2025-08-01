@@ -3,17 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizard</title>
+    <title>Harry Potter Spell Player</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1>Cast Your Spell</h1>
-        <input type="text" id="spellInput" placeholder="Enter a spell...">
+        <div class="sparkle-container">
+            <input type="text" id="spellInput" placeholder="Enter a spell...">
+        </div>
         <button onclick="castSpell()">Cast Spell</button>
+        <div class="spell-book">
+            <button class="spell-book-btn">Spell Book</button>
+            <div class="spell-list">
+                <h3>Available Spells</h3>
+                <ul>
+                    <li><strong>accio</strong>: Play a random song</li>
+                    <li><strong>sonorus</strong>: Increase volume</li>
+                    <li><strong>quietus</strong>: Decrease volume</li>
+                    <li><strong>avada kedavra</strong>: Stop music</li>
+                    <li><strong>lumos</strong>: Switch to light theme</li>
+                    <li><strong>nox</strong>: Switch to dark theme</li>
+                    <li><strong>alohomora</strong>: Unlock hidden song</li>
+                    <li><strong>expelliarmus</strong>: Pause music</li>
+                    <li><strong>reducto</strong>: Skip to next song</li>
+                    <li><strong>muffliato</strong>: Mute/unmute</li>
+                    <li><strong>wingardium leviosa</strong>: Shuffle playlist</li>
+                    <li><strong>expecto patronum</strong>: Play special song</li>
+                </ul>
+                <p>Invalid spells show a Muggle alert!</p>
+            </div>
+        </div>
         <p id="feedback">Welcome to Hogwarts! Cast a spell to begin.</p>
-        <audio id="player" src="assets/audio/hedwig.mp4"></audio>
+        <audio id="player" src="assets/audio/hedwig-theme.mp3"></audio>
     </div>
     <script src="script.js"></script>
 </body>

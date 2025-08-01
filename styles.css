@@ -89,3 +89,72 @@ button:hover {
     25% { transform: translateX(-10px); }
     75% { transform: translateX(10px); }
 }
+
+/* styles.css */
+.spell-book {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.spell-book-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #1a3c34;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    cursor: url('assets/images/wand-cursor.png') 0 32, auto;
+    transition: background-color 0.3s;
+}
+
+.spell-book-btn:hover {
+    background-color: #2e5c4f;
+}
+
+.spell-list {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('assets/images/spell.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 250px;
+    z-index: 10;
+    color: #333;
+    font-family: 'Cinzel', serif;
+    text-align: left;
+}
+
+.spell-book:hover .spell-list {
+    display: block; /* Show on hover */
+}
+
+.spell-list h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+    color: #1a3c34;
+}
+
+.spell-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spell-list li {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.spell-list p {
+    margin: 10px 0 0;
+    font-style: italic;
+    font-size: 0.8em;
+    color: #555;
+}
