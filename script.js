@@ -9,29 +9,56 @@ const errorMessage = document.getElementById('errorMessage');
 
 // Map spells to Spotify track IDs (replace with real IDs)
 const spellTracks = {
-  'lumos': { id: '3KkXRkHbMCARz0aVfEt68P', name: 'Hedwig\'s Theme', artist: 'John Williams' },
-  'expecto patronum': { id: '5zGZK3qRPL9hTIF6JHzDPb', name: 'Battle of Hogwarts', artist: 'Alexandre Desplat' },
-  'wingardium leviosa': { id: '4qZxNAL07rZ9b3lU3q9N0m', name: 'Leaving Hogwarts', artist: 'John Williams' },
-  'expelliarmus': { id: '2W3Y3rZf5fV4r2g3q1bW2X', name: 'Duel of the Fates', artist: 'John Williams' },
-  'alohomora': { id: '6X5fY3nZ3Y3v5f5Y3nZ3Y', name: 'The Chamber of Secrets', artist: 'John Williams' }
+  'lumos': { id: '1n8NKQRg8LVHy7oUhUgbFF', name: 'Hedwig\'s Theme', artist: 'John Williams' }
 };
 
 let player;
 let isPlaying = false;
 
+function initializePlayer(token) {
+  console.log('Spotify SDK loaded');
+  try {
+    player = new Spotify.Player({
+      name: 'Harry Potter Spell Player',
+      getOAuthToken: cb => { cb(token); },
+      volume: 0.5,
+      robustnessLevel: 'low'
+    });
+
+    player.addListener('ready', ({ device_id }) => {
+      console.log('Player ready with Device ID', device_id);
+    });
+
+    player.addListener('not_ready', ({ device_id }) => {
+      console.log('Device ID has gone offline', device_id);
+    });
+
+    player.addListener('initialization_error', ({ message }) => {
+      console.error('Initialization error:', message);
+      errorMessage.textContent = 'Failed to initialize Spotify player. Check token.';
+      errorMessage.classList.remove('hidden');
+    });
+
+    player.addListener('authentication_error', ({ message }) => {
+      console.error('Authentication error:', message);
+      errorMessage.textContent = 'Spotify authentication failed. Refresh token.';
+      errorMessage.classList.remove('hidden');
+    });
+
+    player.connect().then(success => {
+      if (!success) {
+        console.error('Player connection failed');
+      }
+    });
+  } catch (err) {
+    console.error('Spotify Player error:', err);
+    errorMessage.textContent = 'Error setting up player. Try again.';
+    errorMessage.classList.remove('hidden');
+  }
+}
+
 window.onSpotifyWebPlaybackSDKReady = () => {
-  const token = 'YOUR_ACCESS_TOKEN'; // Get from Spotify auth (see below)
-  player = new Spotify.Player({
-    name: 'Harry Potter Spell Player',
-    getOAuthToken: cb => { cb(token); },
-    volume: 0.5
-  });
-
-  player.addListener('ready', ({ device_id }) => {
-    console.log('Player ready with Device ID', device_id);
-  });
-
-  player.connect();
+  // Wait for user to trigger initialization
 };
 
 castButton.addEventListener('click', castSpell);
@@ -40,6 +67,11 @@ spellInput.addEventListener('keypress', (e) => {
 });
 
 playPauseButton.addEventListener('click', () => {
+  if (!player) {
+    errorMessage.textContent = 'Player not initialized. Authorize Spotify first.';
+    errorMessage.classList.remove('hidden');
+    return;
+  }
   if (isPlaying) {
     player.pause();
     playPauseButton.textContent = 'Play';
@@ -55,6 +87,12 @@ function castSpell() {
   errorMessage.classList.add('hidden');
   trackDisplay.classList.add('hidden');
 
+  if (!player) {
+    errorMessage.textContent = 'Player not initialized. Authorize Spotify first.';
+    errorMessage.classList.remove('hidden');
+    return;
+  }
+
   if (spellTracks[spell]) {
     const track = spellTracks[spell];
     player._options.getOAuthToken(token => {
@@ -65,25 +103,36 @@ function castSpell() {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
+      }).then(response => {
+        if (!response.ok) {
+          console.error('Playback error:', response.statusText);
+          errorMessage.textContent = 'Failed to play track. Check token or track ID.';
+          errorMessage.classList.remove('hidden');
+        } else {
+          trackDisplay.classList.remove('hidden');
+          albumArt.src = 'https://via.placeholder.com/128'; // Placeholder image
+          trackName.textContent = track.name;
+          artistName.textContent = track.artist;
+          playPauseButton.textContent = 'Pause';
+          isPlaying = true;
+        }
+      }).catch(err => {
+        console.error('Fetch error:', err);
+        errorMessage.textContent = 'Error playing track. Try again.';
+        errorMessage.classList.remove('hidden');
       });
     });
-    trackDisplay.classList.remove('hidden');
-    albumArt.src = `https://i.scdn.co/image/ab67616d0000b273${track.id}`; // Placeholder, update with real image
-    trackName.textContent = track.name;
-    artistName.textContent = track.artist;
-    playPauseButton.textContent = 'Pause';
-    isPlaying = true;
   } else {
+    errorMessage.textContent = "You're a Muggle! Try a real spell.";
     errorMessage.classList.remove('hidden');
   }
   spellInput.value = '';
 }
 
-// Simplified auth (run separately to get token)
 function getSpotifyToken() {
   const clientId = '6455bcb71b304be5b096fdba4cca0e96';
   const redirectUri = 'http://127.0.0.1:5500';
   const scopes = 'user-read-playback-state user-modify-playback-state';
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&response_type=token`;
-  window.location = authUrl;
+  window.open(authUrl, '_blank');
 }
