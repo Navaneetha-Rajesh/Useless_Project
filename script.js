@@ -16,11 +16,11 @@ const spells = {
         showFeedback('Summoning music!', 'success');
     },
     'sonorus': () => {
-        player.volume = Math.min(player.volume + 0.1, 1);
+        player.volume = Math.min(player.volume + 0.2, 1);
         showFeedback('Voice amplified!', 'success');
     },
     'quietus': () => {
-        player.volume = Math.max(player.volume - 0.1, 0);
+        player.volume = Math.max(player.volume - 0.2, 0);
         showFeedback('Voice softened!', 'success');
     },
     'avada kedavra': () => {
@@ -28,15 +28,11 @@ const spells = {
         player.currentTime = 0;
         showFeedback('Music has been silenced!', 'error');
     },
-    'lumos': () => {
-        document.body.classList.remove('dark-theme');
-        document.body.classList.add('light-theme');
-        showFeedback('Light revealed!', 'success');
+   'lumos': () => {
+        changeTheme('light-theme', 'Light revealed!');
     },
     'nox': () => {
-        document.body.classList.remove('light-theme');
-        document.body.classList.add('dark-theme');
-        showFeedback('Darkness falls!', 'success');
+        changeTheme('dark-theme', 'Darkness falls!');
     },
     'alohomora': () => {
         player.src = songs[songs.length - 1]; // Last song as "hidden"
@@ -70,6 +66,16 @@ const spells = {
         showFeedback('Patronus summoned!', 'success');
     }
 };
+function changeTheme(themeClass, message) {
+    document.body.classList.add('fade-out'); // Start fade-out
+    setTimeout(() => {
+        // Remove all theme classes
+        document.body.classList.remove('light-theme', 'dark-theme', 'fade-out');
+        // Add the new theme and fade back in
+        document.body.classList.add(themeClass, 'fade-in');
+        showFeedback(message, 'success');
+    }, 500); // Match the CSS transition duration (0.5s)
+}
 
 function showFeedback(message, type) {
     feedback.textContent = message;
@@ -90,3 +96,5 @@ function castSpell() {
 spellInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') castSpell();
 });
+
+spellInput.focus();
