@@ -9,7 +9,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    transition: opacity 0.5s ease-in-out; /* Add transition for smooth fade */
+    transition: opacity 0.5s ease-in-out; 
 }
 
 .container {
@@ -63,7 +63,6 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 button:hover {
@@ -90,4 +89,3 @@ button:hover {
     25% { transform: translateX(-10px); }
     75% { transform: translateX(10px); }
 }
-
