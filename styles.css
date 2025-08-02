@@ -1,160 +1,178 @@
-/* styles.css */
+/* Body styles: Set the default hogwarts background */
 body {
+    /* Hogwarts background for Harry Potter theme */
     background: url('assets/images/parchment.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Cinzel', serif;
-    color: #333;
-    display: flex;
+    background-size: cover; /* Ensure background covers entire viewport */
+    font-family: 'Cinzel', serif; /* Magical, Hogwarts-inspired font */
+    color: #333; /* Dark text for readability */
+    display: flex; /* Center content vertically and horizontally */
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    transition: opacity 0.5s ease-in-out; 
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margins */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade for theme transitions */
 }
 
+/* Main container: Centered, semi-transparent box for input and buttons */
 .container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.5s ease-in-out; /* Fade container too */
+    text-align: center; /* Center text and buttons */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white for parchment effect */
+    padding: 20px; /* Inner spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade for theme transitions */
 }
 
+/* Light theme: Parchment background for lumos spell */
 .light-theme {
     background: url('assets/images/parchment.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover; /* Cover entire viewport */
 }
 
+/* Dark theme: Starry night background for nox spell */
 .dark-theme {
     background: url('assets/images/starry-night.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover; /* Cover entire viewport */
 }
 
-/* Class to handle fade-out during transition */
+/* Fade-out effect for smooth theme transitions */
 .fade-out {
-    opacity: 0;
+    opacity: 0; /* Fully transparent during transition */
 }
 
-/* Ensure normal state is fully visible */
+/* Fade-in effect to restore visibility */
 .fade-in {
-    opacity: 1;
+    opacity: 1; /* Fully visible */
 }
 
-
+/* Heading: Large, magical title */
 h1 {
-    font-size: 2.5em;
-    color: #1a3c34;
+    font-size: 2.5em; /* Large text for prominence */
+    color: #1a3c34; /* Dark green for Hogwarts aesthetic */
 }
 
+/* Input field: Styled for spell entry */
 input {
-    padding: 10px;
-    font-size: 1.2em;
-    margin: 10px;
-    border: 2px solid #1a3c34;
-    border-radius: 5px;
-    font-family: 'Cinzel', serif;
+    padding: 10px; 
+    font-size: 1.2em; /* Readable text size */
+    margin: 10px; /* Space around input */
+    border: 2px solid #1a3c34; /* Green border for theme */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Cinzel', serif; 
 }
 
+/* Button: Generic style for Cast Spell and other buttons */
 button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #1a3c34;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    padding: 10px 20px; /* Comfortable click area */
+    font-size: 1.2em; /* Readable text */
+    background-color: #1a3c34; /* Dark green for Hogwarts vibe */
+    color: white; 
+    border: none; /* Clean look */
+    border-radius: 5px; /* Rounded corners */
 }
 
+/* Button hover: Lighter green for interactivity */
 button:hover {
-    background-color: #2e5c4f;
+    background-color: #2e5c4f; /* Slightly lighter green */
 }
 
+/* Feedback text: Displays spell results or Muggle alert */
 #feedback {
-    font-size: 1.2em;
-    margin-top: 20px;
-    color: #333;
+    font-size: 1.2em; 
+    margin-top: 20px; /* Space above feedback */
+    color: #333; 
 }
 
+/* Error feedback: Red text with shake animation for invalid spells */
 .error {
-    animation: shake 0.5s;
-    color: red;
+    animation: shake 0.5s; /* Shake effect for Muggle alert */
+    color: red; /* Red for error */
 }
 
+/* Success feedback: Green text for valid spells */
 .success {
-    color: green;
+    color: green; /* Green for success */
 }
 
+/* Shake animation: Visual cue for invalid spells */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    0%, 100% { transform: translateX(0); } /* Start/end at original position */
+    25% { transform: translateX(-10px); } /* Shake left */
+    75% { transform: translateX(10px); } /* Shake right */
 }
 
-/* styles.css */
+/* Spell book: Container for button and hover tooltip */
 .spell-book {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
+    position: relative; /* Anchor for absolute-positioned spell list */
+    display: inline-block; /* Keep button inline */
+    margin: 10px; /* Space around button */
 }
 
+/* Spell book button: Matches main button style */
 .spell-book-btn {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #1a3c34;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Cinzel', serif;
-    cursor: url('assets/images/wand-cursor.png') 0 32, auto;
-    transition: background-color 0.3s;
+    padding: 10px 20px; /* Consistent padding */
+    font-size: 1.2em; /* Readable text */
+    background-color: #1a3c34; /* Dark green theme */
+    color: white; /* White text */
+    border: none; /* Clean look */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Cinzel', serif; /* Magical font */
+    cursor: url('assets/images/wand-cursor.png') 0 32, auto; /* Wand cursor for magic */
+    transition: background-color 0.3s; /* Smooth hover effect */
 }
 
+/* Spell book button hover: Lighter green */
 .spell-book-btn:hover {
-    background-color: #2e5c4f;
+    background-color: #2e5c4f; /* Consistent hover color */
 }
 
+/* Spell list tooltip: Hidden by default, shown on hover */
 .spell-list {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: url('assets/images/spell.jpg') no-repeat center center;
-    background-size: cover;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 250px;
-    z-index: 10;
-    color: #333;
-    font-family: 'Cinzel', serif;
-    text-align: left;
+    display: none; /* Hidden until hover */
+    position: absolute; /* Position below button */
+    top: 100%; /* Below button */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    background: url('assets/images/spell.jpg') no-repeat center center; /* Parchment background for tooltip */
+    background-size: cover; /* Cover tooltip area */
+    padding: 15px; /* Inner spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    width: 250px; /* Fixed width for readability */
+    z-index: 10; /* Ensure tooltip is above other elements */
+    color: #333; /* Dark text */
+    font-family: 'Cinzel', serif; /* Magical font */
+    text-align: left; /* Align text left for list */
 }
 
+/* Show spell list on hover */
 .spell-book:hover .spell-list {
-    display: block; /* Show on hover */
+    display: block; /* Visible on hover */
 }
 
+/* Spell list heading: Title for available spells */
 .spell-list h3 {
-    margin: 0 0 10px;
-    font-size: 1.2em;
-    color: #1a3c34;
+    margin: 0 0 10px; 
+    font-size: 1.2em; 
+    color: #1a3c34; 
 }
 
+/* Spell list: Remove default bullet points */
 .spell-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* No bullets */
+    padding: 0; 
+    margin: 0; 
 }
-
+/* Spell list items: Individual spell descriptions */
 .spell-list li {
-    margin: 5px 0;
-    font-size: 0.9em;
+    margin: 5px 0; 
+    font-size: 0.9em; 
 }
 
+/* Spell list note: Italicized note about invalid spells */
 .spell-list p {
-    margin: 10px 0 0;
-    font-style: italic;
-    font-size: 0.8em;
-    color: #555;
+    margin: 10px 0 0; /* Space above */
+    font-style: italic; 
+    font-size: 0.8em; 
+    color: #555; 
 }
